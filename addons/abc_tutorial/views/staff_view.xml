@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+<!--        This code is used for the Menu Create Item Field-->
+        <record id="staff_form" model="ir.ui.view">
+            <field name="staff_ids">rest.staff.form</field>
+            <field name="model">rest.staff</field>
+            <field name="arch" type="xml">
+                <form string="tree_string">
+                    <header>
+                        <button string="Confirm" type="object" name="customer_confirm"/>
+                        <button string="Cancel" type="object" name="customer_cancel"/>
+                        <field name="state" widget="statusbar" options="{'clickable':1}"/>
+                    </header>
+                 <sheet>
+                        <group>
+                             <group>
+<!--                                 <field name = "state"/>-->
+                                 <field name="customer_id"/>
+                                 <field name="name" placeholder="Enter Full Name:"/>
+                                 <field name="age" placeholder="Enter Your Age"/>
+                             </group>
+                             <group>
+                                 <field name="dob"/>
+                                 <field name="phone" onchange="validate_phone(phone)" placeholder="Follow: 01...."/>
+                             </group>
+                             <group>
+                                 <field name = "aselection" select="1"/>
+                                 <field name = "amount"/>
+                             </group>
+                            <group>
+                                 <field name="email"/>
+
+                                <!--                    This code is used for the Many to One Field show-->
+    <!--                             <field name="product_id"/>-->
+    <!--                            <field name="product_ids"/>-->
+                             </group>
+                        </group>
+          <!--==== This is Second Note of the Patient Module ====-->
+    <!--                     <sheet>-->
+    <!--                         <notebook>-->
+    <!--                            <page string="Books">-->
+    <!--                                <field name="product_ids"/>-->
+    <!--                            </page>-->
+    <!--                        </notebook>-->
+    <!--                     </sheet>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--   This section is for the Item tree view     -->
+        <record id="staff_tree" model="ir.ui.view">
+            <field name="name">rest.tree</field>
+            <field name="model">rest.staff</field>
+            <field name="arch" type="xml">
+                <tree string="tree_string">
+                    <field name="customer_id"/>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="dob"/>
+                    <field name = "aselection"/>
+                    <field name = "amount"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name = "state"/>
+                </tree>
+        </field>
+    </record>
+
+
+<!--        This part is for the Second part of Bill Sub Menu-->
+<!--        ==============================================================================-->
+        <record id="staff_action" model="ir.actions.act_window">
+            <field name="name">Staff Info</field>
+            <field name="res_model">rest.staff</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+        <menuitem id="master_root" name="Staff Management" sequence="0" />
+        <menuitem id="data_holder" name="Staff Info" parent="master_root"/>
+        <menuitem id="staff_menu" name="Staff Entry" action="staff_action" parent="data_holder" />
+
+<!-- this is the  second sub menu options-->
+<!--        <menuitem id="data_holder_3" name="Bill Info" parent="master_root"/>-->
+<!--        <menuitem id="bill_menu" name="Bill Entry" action="staff_action_second" parent="data_holder"/>-->
+<!--        ========================================== this part is for the Staff Menu ============-->
+
+                    <!--This code is for Show Menu-->
+<!--        <record id="staff_action_second" model="ir.actions.act_window">-->
+<!--            <field name="name">Staff Info</field>-->
+<!--            <field name="res_model">rest.staff</field>-->
+<!--            <field name="view_type">form</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--        </record>-->
+
+<!--        <menuitem id="bill_menu" name="Bill Entry" action="staff_action_second" parent="data_holder"/>-->
+    </data>
+</openerp>

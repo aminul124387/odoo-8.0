@@ -1,0 +1,34 @@
+<record model="ir.ui.view" id="product_product_inherit_form">
+   <field name="name">product_product_inherit</field>
+   <field name="model">product.product</field>
+   <field name="inherit_id" ref="product.product_normal_form_view" />
+   <field name="arch" type="xml">
+
+      <xpath expr="//field[@name='sale_ok']" position="before">
+         <field name="bundle_product" />
+         <label for="bundle_product" />
+         <br></br>
+      </xpath>
+
+      <xpath expr="//field[@name='lst_price']" position="replace">
+         <field name="lst_price" readonly="True" widget="monetary" />
+      </xpath>
+
+      <xpath expr="//form/sheet/notebook" position="inside">
+         <page string="Bundle Product" attrs="{'invisible': [('bundle_product', '=', False)]}">
+            <field name="bundle_product_ids" nolabel="1" colspan="1">
+               <tree string="Bundle" editable="bottom">
+                  <field name="name" required="True"/>
+                  <field name="quantity" required="True"/>
+                  <field name="unit_id" readonly="True" invisible="0"/>
+                  <field name="tm_price" widget="monetary"/>
+                  <field name="tm_sum"  widget="monetary"/>
+               </tree>
+            </field>odoo
+            <group>
+               <field name="lst_price" colspan="1"/>
+            </group>
+         </page>
+      </xpath>
+   </field>
+</record>

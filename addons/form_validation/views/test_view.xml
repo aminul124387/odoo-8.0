@@ -1,0 +1,41 @@
+<openerp>
+    <data>
+        <record id="opd_form" model="ir.ui.view">
+            <field name="name">test.form</field>
+            <field name="model">test.test</field>
+            <field name="arch" type="xml">
+            <form string="tree_string">
+             <sheet>
+                 <group>
+<!--                        <field name="product_ids" />-->
+                        <field name="field1" string="First" onchange="on_field1_change"/>
+                         <field name="field2" string="Second" onchange="on_field2_change"/>
+                        <field name="result" string="Result"/>
+                    </group>
+                </sheet>
+             </form>
+            </field>
+        </record>
+        <record id="mahasiswa_tree" model="ir.ui.view">
+                <field name="name">test.tree</field>
+                <field name="model">test.test</field>
+                <field name="arch" type="xml">
+            <tree string="tree_string">
+<!--                <field name="product_ids" />-->
+                <field name="field1" string="First"/>
+                <field name="field2" string="Second"/>
+                 <field name="result" string="Result"/>
+            </tree>
+            </field>
+        </record>
+        <record id="mahasiswa_action" model="ir.actions.act_window">
+        <field name="name">test</field>
+        <field name="res_model">test.test</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="master_root" name="Check Number"/>
+        <menuitem id="data_holder" name="Item Test" parent="master_root"/>
+        <menuitem id="mahasiswa_menu" name="Test Entry" action="mahasiswa_action" parent="data_holder"/>
+    </data>
+</openerp>

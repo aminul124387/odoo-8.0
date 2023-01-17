@@ -1,0 +1,47 @@
+<openerp>
+    <data>
+        <record id="opd_form" model="ir.ui.view">
+            <field name="name">patient.form</field>
+            <field name="model">patient.test</field>
+            <field name="arch" type="xml">
+            <form string="tree_string">
+             <sheet>
+                <group>
+                     <field name="fname" string="Full Name"/>
+                     <field name="mobile" string="Mobile"/>
+                    <field name="age" string="Age"/>
+                    <field name = "aselection" string="Gender" select="1"/>
+                    <field name = "address" string="Address"/>
+                    <field name = "d_reference" string="Reference"/>
+                    <field name = "d_referel" string="Refferel"/>
+                </group>
+             </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="mahasiswa_tree" model="ir.ui.view">
+            <field name="name">patient.tree</field>
+            <field name="model">patient.test</field>
+            <field name="arch" type="xml">
+            <tree string="tree_string">
+                <field name="fname" string="Full Name"/>
+                <field name="mobile" string="Mobile"/>
+                <field name="age" string="Age"/>
+                <field name = "aselection" string="Gender" select="1"/>
+                <field name = "address" string="Address"/>
+                <field name = "d_reference" string="Reference"/>
+                <field name = "d_referel" string="Refferel"/>
+            </tree>
+        </field>
+    </record>
+<record id="mahasiswa_action" model="ir.actions.act_window">
+<field name="name">test</field>
+<field name="res_model">patient.test</field>
+<field name="view_type">form</field>
+<field name="view_mode">tree,form</field>
+</record>
+<menuitem id="master_root" name="Patient Info"/>
+<menuitem id="data_holder" name="Add Patient" parent="master_root"/>
+<menuitem id="mahasiswa_menu" name="Patient Entry" action="mahasiswa_action" parent="data_holder"/>
+</data>
+</openerp>

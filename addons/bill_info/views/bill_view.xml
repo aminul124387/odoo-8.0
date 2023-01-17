@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="opd_form" model="ir.ui.view">
+            <field name="task_ids">bill.form</field>
+            <field name="model">bill.bill</field>
+            <field name="arch" type="xml">
+            <form string="tree_string">
+                <header>
+                    <button string="Add Discount" type="object" name="add_discount" groups="base.group_user"/>
+                    <button string="Add payment" type="object" name="btn_pay_bill" groups="base.group_user"/>
+                    <button string="Corporate Discount" type="object" name="btn_corporate_discount" groups="base.group_user"/>
+                    <button string="Confirm and Print" type="object" name="bill_confirm" groups="base.group_user"/>
+                    <button string="Cancel" type="object" name="bill_cancel" groups="leih.group_bill_register_button_cancel"/>
+                </header>
+             <sheet>
+                <group>
+                     <field name="pname" string="Full Name"/>
+                     <field name="age"/>
+                    <field name = "aselection" string="Gender" select="1"/>
+                    <field name = "mobile"/>
+                    <field name = "address"/>
+                    <field name = "amount"/>
+                    <field name = "remarks"/>
+                </group>
+<!--                 <notebook>-->
+<!--                        <page string="Referance Value" name = "bill">-->
+<!--                            <field name="note" placeholder="Enter Your item" options="{'collaborative':true, 'resizeable':true}"/>-->
+<!--                        </page>-->
+<!--                        <page string="Bill" name="bill">-->
+<!--                            <field name="note_line_ids">-->
+<!--                                <tree>-->
+<!--                                   <field name="product_id"/>-->
+<!--                                   <field name="price_unit"/>-->
+<!--                                   <field name="qty"/>-->
+<!--                                </tree>-->
+<!--                                <form>-->
+<!--                                    <group>-->
+<!--                                        <field name="product_id"/>-->
+<!--                                        <field name="price_unit"/>-->
+<!--                                        <field name="qty"/>-->
+<!--                                    </group>-->
+<!--                                </form>-->
+<!--                            </field>-->
+<!--                        </page>-->
+<!--                 </notebook>-->
+      <!--==== This is Second Note of the Patient Moduel ====-->
+             </sheet>
+            </form>
+        </field>
+        </record>
+    <record id="mahasiswa_tree" model="ir.ui.view">
+            <field name="name">bill.tree</field>
+            <field name="model">bill.bill</field>
+            <field name="arch" type="xml">
+        <tree string="tree_string">
+            <field name="pname"/>
+            <field name="age"/>
+            <field name = "aselection" string="Gender" select="1"/>
+            <field name = "mobile"/>
+            <field name = "address"/>
+            <field name = "amount"/>
+            <field name = "remarks"/>
+        </tree>
+        </field>
+    </record>
+
+
+<!--        <field name="task_ids" widget="one2many_list" mode="tree,kanban" relation="project.task" context="{'default_project_id': active_id}">-->
+<!--        <tree string="Tasks">-->
+<!--            <field name="name"/>-->
+<!--            <field name="user_id"/>-->
+<!--            <field name="date_deadline"/>-->
+<!--        </tree>-->
+<!--    </field>-->
+
+        <record id="mahasiswa_action" model="ir.actions.act_window">
+            <field name="name">Bill Info</field>
+            <field name="res_model">bill.bill</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+<!--        <record id="action_department_information" model="ir.actions.act_window">-->
+<!--            <field name="name">Department Info</field>-->
+<!--            <field name="res_model">patient.dept</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="help" type="html">-->
+<!--                <p>Create New Departments</p>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+
+        <menuitem id="master_root" name="One2Many"/>
+        <menuitem id="data_holder" name="Bill Info" parent="master_root"/>
+        <menuitem id="mahasiswa_menu" name="Bill Entry" action="mahasiswa_action" parent="data_holder"/>
+
+
+<!--        <menuitem-->
+<!--            id="Submenu_patient_department"-->
+<!--            name="Department"-->
+<!--            parent="head_patient_department"-->
+<!--            action="action_department_information"-->
+<!--            />-->
+    </data>
+</openerp>

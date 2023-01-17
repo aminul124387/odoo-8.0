@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+<!--        <record id="many2one_infectorfield" model="ir.ui.view">-->
+<!--            <field name="inherited_id" ref="sale.view_order_form"/>-->
+<!--            <field name="model">sale.order</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="tree_string">-->
+<!--                       <xpath expr="//field[@name='payment_term_id']" position="after">-->
+<!--                           <field name="inspector_id"/>-->
+<!--                       </xpath>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+<!--        <record id="one2many_animals" model="ir.ui.view">-->
+<!--            <field name="inherited_id" ref="sale.view_order_form"/>-->
+<!--            <field name="model">res.partner</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="tree_string">-->
+<!--                       <xpath expr="//page[@name='contact_addresses']" position="before">-->
+<!--                           <field name="inspector_id"/>-->
+<!--                       </xpath>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+
+    </data>
+</openerp>

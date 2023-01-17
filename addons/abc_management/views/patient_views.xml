@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+<!--        This code is used for the Patient Create in one Field-->
+<!--        <record id="sale_order_inherit" model="ir.ui.view">-->
+<!--            <field name="name">sale.order.inherit</field>-->
+<!--            <field name="model">sale.order</field>-->
+<!--            <field name="inherit_id" ref="sale.view_order_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <field name="partner_id" position="after">-->
+<!--                    <field name="patient_name"/>-->
+<!--                </field>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+<!--        This code is used for the Menu Create Item Field-->
+        <record id="hospital_form" model="ir.ui.view">
+            <field name="task_ids">hospital.patient.form</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+            <form string="tree_string">
+                <header>
+                    <button string="Add Discount" type="object" name="add_discount" groups="base.group_user"/>
+                    <button string="Add payment" type="object" name="btn_pay_bill" groups="base.group_user"/>
+                    <button string="Corporate Discount" type="object" name="btn_corporate_discount" groups="base.group_user"/>
+                    <button string="Confirm and Print" type="object" name="bill_confirm" groups="base.group_user"/>
+                    <button string="Cancel" type="object" name="bill_cancel" groups="leih.group_bill_register_button_cancel"/>
+                </header>
+             <sheet>
+                <group>
+                     <group>
+                         <field name="patient_ID" string="Patient ID"/>
+                         <field name="patient_age"/>
+                         <field name = "mobile" string="Mobile" />
+                         <field name = "open_date"/>
+                     </group>
+                    <group>
+                         <field name="patient_name" string="Name"/>
+                        <field name = "aselection" string="Gender" select="1"/>
+                        <field name = "address"/>
+                     </group>
+                </group>
+      <!--==== This is Second Note of the Patient Module ====-->
+             </sheet>
+            </form>
+        </field>
+        </record>
+
+<!--        This code is for the Searching value for Item need-->
+
+    <record id="hospital_patient_search" model="ir.ui.view">
+            <field name="name">hospital.patient.search</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <search string="Search_Patients">
+                    <field name="patient_name" filter_domain="['|',('patient_name','ilike',self),('mobile','ilike',self)]"/>
+                    <field name = "patient_ID"/>
+                    <field name = "mobile"/>
+<!--                    This code use for Data Filtering-->
+                    <separator/>
+                    <filter string="Male" name="male" domain="[('aselection','=', 'male')]"/>
+                    <filter string="Female" name="female" domain="[('aselection','=', 'female')]"/>
+
+<!--                    This code use for Data Group By-->
+
+                    <group expand="0" string="Group By">
+                        <filter string="Gender" name="aselection" context="{'group_by':'aselection'}"/>
+                    </group>
+                </search>
+        </field>
+    </record>
+
+<!--   This section is for the Item tree view     -->
+        <record id="hospital_tree" model="ir.ui.view">
+            <field name="name">hospital.tree</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <tree string="tree_string">
+                    <field name="patient_ID" string="Patient ID"/>
+                    <field name="patient_name" string="Name"/>
+                    <field name="patient_age"/>
+                    <field name = "aselection" string="Gender"/>
+                    <field name = "mobile" string="Mobile" />
+                    <field name = "address"/>
+                    <field name = "open_date"/>
+                </tree>
+        </field>
+    </record>
+<!--This code is for Show Menu-->
+        <record id="hospital_action" model="ir.actions.act_window">
+            <field name="name">Hospital Info</field>
+            <field name="res_model">hospital.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+        <menuitem id="master_root" name="Hospital Management" sequence="0" web_icon="abc_management,static/description/icon.png"/>
+        <menuitem id="data_holder" name="Bill Info" parent="master_root"/>
+        <menuitem id="hospital_menu" name="Bill Entry" action="hospital_action" parent="data_holder"/>
+
+
+    </data>
+</openerp>
