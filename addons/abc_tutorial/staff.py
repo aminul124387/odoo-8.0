@@ -78,7 +78,8 @@ class RestStaff(models.Model):
             if record.age <= 0:
                 raise ValidationError('Please Input the proper age!')
 
-    
+
+
 
     # ========== This Part is used for the Number Validation Function ===========----------
 
